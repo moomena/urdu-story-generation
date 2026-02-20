@@ -15,23 +15,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
-# -------------------------
-# Request format
-# -------------------------
 class GenerateRequest(BaseModel):
     prefix: str = ""
     max_sentences: int = 5  # Adjustable number of sentences
 
-# -------------------------
-# Response format
-# -------------------------
 class GenerateResponse(BaseModel):
     story: str
 
-# -------------------------
-# API endpoint
-# -------------------------
 @app.post("/generate", response_model=GenerateResponse)
 def generate(req: GenerateRequest):
     story = generate_story(prefix=req.prefix, max_sentences=req.max_sentences)
