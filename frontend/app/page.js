@@ -1,11 +1,11 @@
 "use client";
-
-import ChatBox from "../components/ChatBox";
+import { useState } from "react";
+import ChatBox from "@/components/ChatBox";
 
 export default function Home() {
+  const [messages, setMessages] = useState([]);
+
   return (
-    <main className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
-      <ChatBox />
-    </main>
+    <ChatBox messages={messages} setMessages={setMessages} />
   );
 }
